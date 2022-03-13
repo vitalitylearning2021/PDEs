@@ -58,7 +58,7 @@ La regola di update [\[7\]](#LaplaceJacobi) consiste dunque nel calcolo dello st
      <em>Figure 1. Computational stencil for Laplace equation.</em>
 </p>
 
-where the south <img src="https://render.githubusercontent.com/render/math?math=T_s">, north <img src="https://render.githubusercontent.com/render/math?math=T_n">, west <img src="https://render.githubusercontent.com/render/math?math=T_w"> and east <img src="https://render.githubusercontent.com/render/math?math=T_e"> elements correspond to <img src="https://render.githubusercontent.com/render/math?math=T_{m-1,n}">, <img src="https://render.githubusercontent.com/render/math?math=T_{m+1,n}">, <img src="https://render.githubusercontent.com/render/math?math=T_{m,n-1}"> and <img src="https://render.githubusercontent.com/render/math?math=T_{m,n+1}">.
+where the south <img src="https://render.githubusercontent.com/render/math?math=T_s">, north <img src="https://render.githubusercontent.com/render/math?math=T_n">, west <img src="https://render.githubusercontent.com/render/math?math=T_w"> and east <img src="https://render.githubusercontent.com/render/math?math=T_e"> elements correspond to <img src="https://render.githubusercontent.com/render/math?math=T_{m-1,n}">, <img src="https://render.githubusercontent.com/render/math?math=T_{m %2B 1,n}">, <img src="https://render.githubusercontent.com/render/math?math=T_{m,n-1}"> and <img src="https://render.githubusercontent.com/render/math?math=T_{m,n %2B 1}">.
 
 Assumendo <img src="https://render.githubusercontent.com/render/math?math=\Delta t=1"> e <img src="https://render.githubusercontent.com/render/math?math=\Delta x=\Delta y=1">,  l'equazione [\[3\]](#heatEquationDiscretized) definisce la seguente formula di aggiornamento:
 
