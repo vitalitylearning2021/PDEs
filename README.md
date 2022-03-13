@@ -13,7 +13,7 @@ in cui l'incognita <img src="https://render.githubusercontent.com/render/math?ma
 Se espandiamo l'operatore Laplaciano <img src="https://render.githubusercontent.com/render/math?math=\nabla^2">, otteniamo
 
 <p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=\frac{\partial T(x,y)}{\partial t}=\frac{\partial^2 T(x,y)}{\partial x^2}+\frac{\partial^2 T(x,y)}{\partial y^2}." id="heatEquation">       [1]
+  <img src="https://render.githubusercontent.com/render/math?math=\frac{\partial T(x,y)}{\partial t}=\frac{\partial^2 T(x,y)}{\partial x^2} %2B \frac{\partial^2 T(x,y)}{\partial y^2}." id="heatEquation">       [2]
 </p>
 
 
