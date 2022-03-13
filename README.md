@@ -26,13 +26,26 @@ Approssimando le derivate contenute nella [\[2\]](#laplaceEquationExpanded) con 
 
 con <img src="https://render.githubusercontent.com/render/math?math=m=0,\ldots,M-1"> ed <img src="https://render.githubusercontent.com/render/math?math=n=0,\ldots,N-1">.
 
-Il sistema [\[3\]](#laplaceEquationDiscretized) può essere risolto utilizzando il metodo di Jacobi. Quest'ultimo è un metodo iterativo per risolvere un sistema di <img src="https://render.githubusercontent.com/render/math?math=P"> equazioni lineari in <img src="https://render.githubusercontent.com/render/math?math=P"> incognite <img src="https://render.githubusercontent.com/render/math?math=\mathbf{y}=\mathbf{A}\cdot \mathbf{x}">. Per illustrare il metodo di Jacobi, riscriviamo l'<img src="https://render.githubusercontent.com/render/math?math=i">-ma equazione del sistema lineare come
+Il sistema [\[3\]](#laplaceEquationDiscretized) può essere risolto utilizzando il metodo di Jacobi. Quest'ultimo è un metodo iterativo per risolvere un sistema di <img src="https://render.githubusercontent.com/render/math?math=P"> equazioni lineari in <img src="https://render.githubusercontent.com/render/math?math=P"> incognite <img src="https://render.githubusercontent.com/render/math?math=\mathbf{b}=\mathbf{A}\cdot \mathbf{x}">. Per illustrare il metodo di Jacobi, riscriviamo l'<img src="https://render.githubusercontent.com/render/math?math=i">-ma equazione del sistema lineare come
 
 <p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=a_{i,1}x_1 %2B a_{i,2}x_2 %2B \ldots %2B a_{i,P}x_P=0," id="ithEquation">       [4]
+  <img src="https://render.githubusercontent.com/render/math?math=a_{i,1}x_1 %2B a_{i,2}x_2 %2B \ldots %2B a_{i,P}x_P=b_i," id="ithEquation">       [4]
 </p>
 
-where gli <img src="https://render.githubusercontent.com/render/math?math=a_{i,p}">'s sono gli elementi della matrice <img src="https://render.githubusercontent.com/render/math?math=\mathbf{A}">, 
+where gli <img src="https://render.githubusercontent.com/render/math?math=a_{i,p}">'s sono gli elementi della matrice <img src="https://render.githubusercontent.com/render/math?math=\mathbf{A}"> e gli <img src="https://render.githubusercontent.com/render/math?math=b_i">'s sono gli elementi del vettore <img src="https://render.githubusercontent.com/render/math?math=\mathbf{b}">. Il valore di <img src="https://render.githubusercontent.com/render/math?math=x_i"> può dunque essere espresso come
+
+<p align="center">
+  <img src="https://render.githubusercontent.com/render/math?math=x_i = \frac{1}{a_{i,i}}\left[b_i-\sum_{j\neq i}a_{i,j}x_j\right]." id="ithUnknown">       [5]
+</p>
+
+Il metodo Jacobi per risolvere un sistema di equazioni lineari definisce iterazioni per le quali, data la soluzione al passo <img src="https://render.githubusercontent.com/render/math?math=k">-mo, diciamo <img src="https://render.githubusercontent.com/render/math?math=\mathbf{x}^k">, la soluzione al passo successivo viene espressa come
+
+<p align="center">
+  <img src="https://render.githubusercontent.com/render/math?math=x_i^k = \frac{1}{a_{i,i}}\left[b_i-\sum_{j\neq i}a_{i,j}x_j^{k-1}\right]." id="ithUnknownJacobi">       [6]
+</p>
+
+
+
 Assumendo <img src="https://render.githubusercontent.com/render/math?math=\Delta t=1"> e <img src="https://render.githubusercontent.com/render/math?math=\Delta x=\Delta y=1">,  l'equazione [\[3\]](#heatEquationDiscretized) definisce la seguente formula di aggiornamento:
 
 <p align="center">
