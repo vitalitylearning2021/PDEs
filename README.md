@@ -21,7 +21,7 @@ Introduciamo a questo punto un grigliato di calcolo di <img src="https://render.
 Approssimando le derivate contenute nella [\[2\]](#heatEquationExpanded) con differenze finite, si ha
 
 <p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=\frac{T_{m,n}^{k 2%B 1}-T_{m,n}^{k}}{\Delta t}." id="heatEquationDiscretized">       [3]
+  <img src="https://render.githubusercontent.com/render/math?math=\frac{T_{m,n}^{k 2%B 1}}{\Delta t}." id="heatEquationDiscretized">       [3]
 </p>
 
 
