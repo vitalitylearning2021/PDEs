@@ -18,12 +18,21 @@ Se espandiamo l'operatore Laplaciano <img src="https://render.githubusercontent.
 
 Introduciamo a questo punto un grigliato di calcolo di <img src="https://render.githubusercontent.com/render/math?math=M\times N"> punti <img src="https://render.githubusercontent.com/render/math?math=(x_m, y_n)">, con <img src="https://render.githubusercontent.com/render/math?math=x_m=m \Delta x"> ed <img src="https://render.githubusercontent.com/render/math?math=y_n=n \Delta y">, con <img src="https://render.githubusercontent.com/render/math?math=m=0,\ldots,M-1"> ed <img src="https://render.githubusercontent.com/render/math?math=n=0,\ldots,N-1">. Infine, indichiamo con <img src="https://render.githubusercontent.com/render/math?math=T_{mn}"> i valori dell'incognita nei punti del grigliato introdotto, ossia <img src="https://render.githubusercontent.com/render/math?math=T(x_m,y_n)=T_{m,n}">.
 
-Approssimando le derivate contenute nella [\[2\]](#laplaceEquationExpanded) con differenze finite e assumendo <img src="https://render.githubusercontent.com/render/math?math=\Delta x=\Delta y = 1">, si ha il seguente sistema di equazioni lineari algebriche
+Approssimando le derivate contenute nella [\[2\]](#laplaceEquationExpanded) con differenze finite e assumendo <img src="https://render.githubusercontent.com/render/math?math=\Delta x=\Delta y = 1">, si ha il seguente sistema di <img src="https://render.githubusercontent.com/render/math?math=M\times N"> equazioni lineari algebriche
 
 <p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=T_{m %2B 1,n}^{k}-2T_{m,n}^{k} %2B T_{m-1,n}^{k} %2B T_{m,n %2B 1}^{k}-2T_{m,n}^{k} %2B T_{m,n-1}^{k}." id="laplaceEquationDiscretized">       [3]
+  <img src="https://render.githubusercontent.com/render/math?math=T_{m %2B 1,n}^{k}-2T_{m,n}^{k} %2B T_{m-1,n}^{k} %2B T_{m,n %2B 1}^{k}-2T_{m,n}^{k} %2B T_{m,n-1}^{k}," id="laplaceEquationDiscretized">       [3]
 </p>
 
+con <img src="https://render.githubusercontent.com/render/math?math=m=0,\ldots,M-1"> ed <img src="https://render.githubusercontent.com/render/math?math=n=0,\ldots,N-1">.
+
+Il sistema [\[3\]](#laplaceEquationDiscretized) può essere risolto utilizzando il metodo di Jacobi. Quest'ultimo è un metodo iterativo per risolvere un sistema di <img src="https://render.githubusercontent.com/render/math?math=P"> equazioni lineari in <img src="https://render.githubusercontent.com/render/math?math=P"> incognite <img src="https://render.githubusercontent.com/render/math?math=\mathbb{y}=\mathbb{A}\cdot \mathbb{A}">. Per illustrare il metodo di Jacobi, riscriviamo l'<img src="https://render.githubusercontent.com/render/math?math=i">-ma equazione del sistema lineare come
+
+<p align="center">
+  <img src="https://render.githubusercontent.com/render/math?math=a_{i,1}x_1 %2B a_{i,2}x_2 %2B \ldots %2B a_{i,P}x_P=0," id="ithEquation">       [4]
+</p>
+
+where gli <img src="https://render.githubusercontent.com/render/math?math=a_{i,p}">'s sono gli elementi della matrice <img src="https://render.githubusercontent.com/render/math?math=\mathbb{A}">, 
 Assumendo <img src="https://render.githubusercontent.com/render/math?math=\Delta t=1"> e <img src="https://render.githubusercontent.com/render/math?math=\Delta x=\Delta y=1">,  l'equazione [\[3\]](#heatEquationDiscretized) definisce la seguente formula di aggiornamento:
 
 <p align="center">
