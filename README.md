@@ -21,7 +21,7 @@ Introduciamo a questo punto un grigliato di calcolo di <img src="https://render.
 Approssimando le derivate contenute nella [\[2\]](#laplaceEquationExpanded) con differenze finite e assumendo <img src="https://render.githubusercontent.com/render/math?math=\Delta x=\Delta y = 1">, si ha il seguente sistema di <img src="https://render.githubusercontent.com/render/math?math=M\times N"> equazioni lineari algebriche
 
 <p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=T_{m %2B 1,n}^{k}-2T_{m,n}^{k} %2B T_{m-1,n}^{k} %2B T_{m,n %2B 1}^{k}-2T_{m,n}^{k} %2B T_{m,n-1}^{k}," id="laplaceEquationDiscretized">       [3]
+  <img src="https://render.githubusercontent.com/render/math?math=T_{m %2B 1,n}-2T_{m,n} %2B T_{m-1,n} %2B T_{m,n %2B 1}-2T_{m,n} %2B T_{m,n-1}=0," id="laplaceEquationDiscretized">       [3]
 </p>
 
 con <img src="https://render.githubusercontent.com/render/math?math=m=0,\ldots,M-1"> ed <img src="https://render.githubusercontent.com/render/math?math=n=0,\ldots,N-1">.
@@ -44,6 +44,19 @@ Il metodo Jacobi per risolvere un sistema di equazioni lineari definisce iterazi
   <img src="https://render.githubusercontent.com/render/math?math=x_i^k = \frac{1}{a_{i,i}}\left[b_i-\sum_{j\neq i}a_{i,j}x_j^{k-1}\right]." id="ithUnknownJacobi">       [6]
 </p>
 
+Ispirati dalla [\[6\]](#ithUnknownJacobi), il metodo di Jacobi per la soluzione numerica dell'equazione di Laplace consiste in:
+
+<p align="center">
+  <img src="https://render.githubusercontent.com/render/math?math=T_{m,n}^k = 0.25\left[T_{m-1,n}^{k-1} %2B T_{m+1,n}^{k-1} %2B T_{m,n-1}^{k-1} %2B T_{m,n+1}^{k-1}\right]." id="LaplaceJacobi">       [7]
+</p>
+
+La regola di update [\[7\]](#LaplaceJacobi) consiste dunque nel calcolo dello stencil nella figura seguente
+
+<p align="center">
+  <img src="linearInterpolation.png" width="400" id="linearInterpolation1D">
+  <br>
+     <em>Figure 7. Linear interpolation: one-dimensional case.</em>
+</p>
 
 
 Assumendo <img src="https://render.githubusercontent.com/render/math?math=\Delta t=1"> e <img src="https://render.githubusercontent.com/render/math?math=\Delta x=\Delta y=1">,  l'equazione [\[3\]](#heatEquationDiscretized) definisce la seguente formula di aggiornamento:
