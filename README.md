@@ -26,7 +26,7 @@ Approssimando le derivate contenute nella [\[2\]](#laplaceEquationExpanded) con 
 
 con <img src="https://render.githubusercontent.com/render/math?math=m=0,\ldots,M-1"> ed <img src="https://render.githubusercontent.com/render/math?math=n=0,\ldots,N-1">.
 
-Il sistema [\[3\]](#laplaceEquationDiscretized) può essere risolto utilizzando il metodo di Jacobi. Quest'ultimo è un metodo iterativo per risolvere un sistema di <img src="https://render.githubusercontent.com/render/math?math=P"> equazioni lineari in <img src="https://render.githubusercontent.com/render/math?math=P"> incognite <img src="https://render.githubusercontent.com/render/math?math=\mathbb{y}=\mathbb{A}\cdot \mathbb{A}">. Per illustrare il metodo di Jacobi, riscriviamo l'<img src="https://render.githubusercontent.com/render/math?math=i">-ma equazione del sistema lineare come
+Il sistema [\[3\]](#laplaceEquationDiscretized) può essere risolto utilizzando il metodo di Jacobi. Quest'ultimo è un metodo iterativo per risolvere un sistema di <img src="https://render.githubusercontent.com/render/math?math=P"> equazioni lineari in <img src="https://render.githubusercontent.com/render/math?math=P"> incognite <img src="https://render.githubusercontent.com/render/math?math=\mathbf{y}=\mathbf{A}\cdot \mathbb{A}">. Per illustrare il metodo di Jacobi, riscriviamo l'<img src="https://render.githubusercontent.com/render/math?math=i">-ma equazione del sistema lineare come
 
 <p align="center">
   <img src="https://render.githubusercontent.com/render/math?math=a_{i,1}x_1 %2B a_{i,2}x_2 %2B \ldots %2B a_{i,P}x_P=0," id="ithEquation">       [4]
