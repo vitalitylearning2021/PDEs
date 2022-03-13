@@ -24,6 +24,12 @@ Approssimando le derivate contenute nella [\[2\]](#heatEquationExpanded) con dif
   <img src="https://render.githubusercontent.com/render/math?math=\frac{T_{m,n}^{k %2B 1}-T_{m,n}^{k}}{\Delta t}=\frac{T_{m %2B 1,n}^{k}-2T_{m,n}^{k} %2B T_{m-1,n}^{k}}{\Delta x^2} %2B \frac{T_{m,n %2B 1}^{k}-2T_{m,n}^{k} %2B T_{m,n-1}^{k}}{\Delta y^2}." id="heatEquationDiscretized">       [3]
 </p>
 
+Assumendo <img src="https://render.githubusercontent.com/render/math?math=\Delta t=1"> e <img src="https://render.githubusercontent.com/render/math?math=\Delta x=\Delta y=1">,  l'equazione [\[3\]](#heatEquationDiscretized) definisce la seguente formula di aggiornamento:
+
+<p align="center">
+  <img src="https://render.githubusercontent.com/render/math?math=\frac{T_{m,n}^{k %2B 1}-T_{m,n}^{k}}{\Delta t}=\frac{T_{m %2B 1,n}^{k}-2T_{m,n}^{k} %2B T_{m-1,n}^{k}}{\Delta x^2} %2B \frac{T_{m,n %2B 1}^{k}-2T_{m,n}^{k} %2B T_{m,n-1}^{k}}{\Delta y^2}." id="heatEquationUpdate">       [4]
+</p>
+
 
 https://www.dais.unive.it/~calpar/New_HPC_course/AA16-17/Project-Jacobi.pdf
 
