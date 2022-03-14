@@ -47,7 +47,7 @@ Il metodo Jacobi per risolvere un sistema di equazioni lineari definisce iterazi
 Ispirati dalla [\[6\]](#ithUnknownJacobi), il metodo di Jacobi per la soluzione numerica dell'equazione di Laplace consiste in:
 
 <p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=T_{m,n}^k = 0.25\left[T_{m-1,n}^{k-1} %2B T_{m+1,n}^{k-1} %2B T_{m,n-1}^{k-1} %2B T_{m,n+1}^{k-1}\right]." id="LaplaceJacobi">       [7]
+  <img src="https://render.githubusercontent.com/render/math?math=T_{m,n}^k = 0.25\left[T_{m-1,n}^{k-1} %2B T_{m %2B 1,n}^{k-1} %2B T_{m,n-1}^{k-1} %2B T_{m,n %2B 1}^{k-1}\right]." id="LaplaceJacobi">       [7]
 </p>
 
 La regola di update [\[7\]](#LaplaceJacobi) consiste dunque nel calcolo dello stencil nella figura seguente
