@@ -8,7 +8,7 @@ Consideriamo l'equazione di Laplace
   <img src="https://render.githubusercontent.com/render/math?math=\nabla^2T(x,y)=0." id="laplaceEquation">       [1]
 </p>
 
-in cui l'incognita <img src="https://render.githubusercontent.com/render/math?math=T(x,y)"> è una funzione di due variabili spaziali <img src="https://render.githubusercontent.com/render/math?math=(x,y)">. Per una risoluzione univoca, abbiamo bisogno di condizioni al contorno. Ricordando di essere maggiormente interessati ad illustrare la tecnica programmativa di risoluzione di PDEs, non ci preoccuperemo di questo problema e fisseremo queste condizioni in seguito. L'equazione di Laplace [\[1\]](#laplaceEquation) modella lo steady state di una funzione, definita in uno dominio two-dimensional, che rappresenta una particolare grandezza fisica. In casi pratici, <img src="https://render.githubusercontent.com/render/math?math=T(x,y)"> può rappresentare il calore, e l'equazione [\[1\]](#laplaceEquation) può essere usata per studiare come il calore si distribuisce in un certo dominio, fissate che siano le condizioni al contorno
+in cui l'incognita <img src="https://render.githubusercontent.com/render/math?math=T(x,y)"> è una funzione di due variabili spaziali <img src="https://render.githubusercontent.com/render/math?math=(x,y)">. L'equazione di Laplace [\[1\]](#laplaceEquation) modella lo steady state di una funzione, definita in uno dominio two-dimensional, che rappresenta una particolare grandezza fisica. In casi pratici, <img src="https://render.githubusercontent.com/render/math?math=T(x,y)"> può rappresentare il calore, e l'equazione [\[1\]](#laplaceEquation) può essere usata per studiare come il calore si distribuisce in un certo dominio, fissate che siano le condizioni al contorno
 
 Se espandiamo l'operatore Laplaciano <img src="https://render.githubusercontent.com/render/math?math=\nabla^2">, otteniamo
 
@@ -60,7 +60,9 @@ La regola di update [\[7\]](#LaplaceJacobi) consiste dunque nel calcolo dello st
 
 where the south <img src="https://render.githubusercontent.com/render/math?math=T_s">, north <img src="https://render.githubusercontent.com/render/math?math=T_n">, west <img src="https://render.githubusercontent.com/render/math?math=T_w"> and east <img src="https://render.githubusercontent.com/render/math?math=T_e"> elements correspond to <img src="https://render.githubusercontent.com/render/math?math=T_{m-1,n}">, <img src="https://render.githubusercontent.com/render/math?math=T_{m %2B 1,n}">, <img src="https://render.githubusercontent.com/render/math?math=T_{m,n-1}"> and <img src="https://render.githubusercontent.com/render/math?math=T_{m,n %2B 1}">.
 
-DIRE ORA QUALE CONDIZIONE AL CONTORNO SI USA E QUALE è LA SOLUZIONE INIZIALE CHE SI USA.
+Per una risoluzione univoca dell'equazione di Laplace, abbiamo bisogno di condizioni al contorno. In questo esempio, immagineremo di avere un pipe centrato in un punto di coordinate <img src="https://render.githubusercontent.com/render/math?math=(x,y)"> e di raggio pari a <img src="https://render.githubusercontent.com/render/math?math=r"> che scorre ortogonalmente al solution domain. Il pipe si troverà ad una temperatura pari a <img src="https://render.githubusercontent.com/render/math?math=T_{pipe}">. Inoltre, i bordi sinistro, destro e superiore sono assunti avere una temperatura pari a <img src="https://render.githubusercontent.com/render/math?math=T_{air}">, mentre il bordo inferiore è assunto avere una temperatura pari a <img src="https://render.githubusercontent.com/render/math?math=T_{ground}">. In questo modo, modellizziamo un pipe che scorre in aria e posizionato vicino al suolo.
+
+
 
 Assumendo <img src="https://render.githubusercontent.com/render/math?math=\Delta t=1"> e <img src="https://render.githubusercontent.com/render/math?math=\Delta x=\Delta y=1">,  l'equazione [\[3\]](#heatEquationDiscretized) definisce la seguente formula di aggiornamento:
 
