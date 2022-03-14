@@ -62,6 +62,34 @@ where the south <img src="https://render.githubusercontent.com/render/math?math=
 
 Per una risoluzione univoca dell'equazione di Laplace, abbiamo bisogno di condizioni al contorno. In questo esempio, immagineremo di avere un pipe centrato in un punto di coordinate <img src="https://render.githubusercontent.com/render/math?math=(x,y)"> e di raggio pari a <img src="https://render.githubusercontent.com/render/math?math=r"> che scorre ortogonalmente al solution domain. Il pipe si troverà ad una temperatura pari a <img src="https://render.githubusercontent.com/render/math?math=T_{pipe}">. Inoltre, i bordi sinistro, destro e superiore sono assunti avere una temperatura pari a <img src="https://render.githubusercontent.com/render/math?math=T_{air}">, mentre il bordo inferiore è assunto avere una temperatura pari a <img src="https://render.githubusercontent.com/render/math?math=T_{ground}">. In questo modo, modellizziamo un pipe che scorre in aria e posizionato vicino al suolo.
 
+Come initial guess del metodo iterativo, viene scelta una temperatura che soddisfa le condizioni al contorno e nel resto del dominio vale `T_{air}`.
+
+### Iterazioni di Jacobi per l'equazione di Laplace: implementazione CPU
+
+Come step preparatorio ad illustrare lo schema implementativo su GPU, illustriamone dapprima la soluzione CPU.
+
+Il `main` program è il seguente:
+
+``` c++
+int main() {
+
+	float* h_temperature = (float*)malloc(W * H * sizeof(float));
+	float* h_temperature_new = (float*)malloc(W * H * sizeof(float));
+
+	resetTemperatureCPU(h_temperature, W, H, bc);
+
+	for (int iter = 0; iter < MAX_NUM_ITERS / 2; iter++) {
+		temperatureUpdateCPU(h_temperature, h_temperature_new, W, H, bc);
+		temperatureUpdateCPU(h_temperature_new, h_temperature, W, H, bc);
+	}
+
+	saveCPUrealtxt(h_temperature, ".\\CPU_result.txt", W * H);
+
+	return 0;
+}
+```
+
+Come si può vedere, vengono definite due matrici, cioè `h_temperature` ed `h_temperature_new`, di dimensioni `W` e `H`, che dovranno contenere la distribuzione di temperatura alla generica iterazione `k` e `k %2B 1`, rispettivamente. La funzione `resetTemperatureCPU` fissa il valore dell'inizial guess, mentre `temperatureUpdateCPU` effettua l'update della temperatura, ossia valuta la regola di aggiornamento [\[7\]](#LaplaceJacobi).
 
 
 Assumendo <img src="https://render.githubusercontent.com/render/math?math=\Delta t=1"> e <img src="https://render.githubusercontent.com/render/math?math=\Delta x=\Delta y=1">,  l'equazione [\[3\]](#heatEquationDiscretized) definisce la seguente formula di aggiornamento:
