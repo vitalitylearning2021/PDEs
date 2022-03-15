@@ -66,7 +66,7 @@ Come initial guess del metodo iterativo, viene scelta una temperatura che soddis
 
 ### Iterazioni di Jacobi per l'equazione di Laplace: implementazione CPU
 
-Come step preparatorio ad illustrare lo schema implementativo su GPU, illustriamone dapprima la soluzione CPU.
+Come step preparatorio ad illustrare lo schema implementativo su GPU, illustriamone dapprima la soluzione CPU contenuta nel file `heatEquationCPU.rar`.
 
 Il `main` program è il seguente:
 
@@ -89,7 +89,63 @@ int main() {
 }
 ```
 
-Come si può vedere, vengono definite due matrici, cioè `h_temperature` ed `h_temperature_new`, di dimensioni `W` e `H`, che dovranno contenere la distribuzione di temperatura alla generica iterazione `k` e `k %2B 1`, rispettivamente. La funzione `resetTemperatureCPU` fissa il valore dell'inizial guess, mentre `temperatureUpdateCPU` effettua l'update della temperatura, ossia valuta la regola di aggiornamento [\[7\]](#LaplaceJacobi).
+Come si può vedere, vengono definite due matrici, cioè `h_temperature` ed `h_temperature_new`, di dimensioni `W` e `H`, che dovranno contenere la distribuzione di temperatura alla generica iterazione `k` e `k %2B 1`, rispettivamente. La funzione `resetTemperatureCPU` fissa il valore dell'inizial guess, mentre `temperatureUpdateCPU` effettua l'update della temperatura, ossia valuta la regola di aggiornamento [\[7\]](#LaplaceJacobi). Si noti come il `for` loop che implementa le iterazioni effettui un numero di cicli pari a `MAX_NUM_ITERS / 2`, mentre ogni ciclo effettui due iterazioni. In particolare, la funzione `temperatureUpdateCPU` viene chiamata con parametri di ingresso `h_temperature` ed `h_temperature_new` scambiati passando da un'invocazione all'altra. E' da notare che, a valle della prima invocazione, `h_temperature_new` diventa l'array più aggiornato che, nell'iterazione successiva, dovrebbe diventare quello al passo precedente per poter essere aggiornato successivamente a sua volta. Per ottenere ciò, a valle della prima invocazione di `temperatureUpdateCPU`, gli array `h_temperature` ed `h_temperature_new` andrebbero swappati. Invocando `temperatureUpdateCPU` con parametri scambiati questo risultato si ottiene implicitamente. 
+
+Infine, il risultato dell'elaborazione è salvato in un file testo invocando la funzione `saveCPUrealtxt`. Tale funzione fa parte del repository [CUDA-Utilities](https://vitalitylearning2021.github.io/CUDA-Utilities/).
+
+La funzione `resetTemperatureCPU` effettua il reset della temperatura ad un valore di <img src="https://render.githubusercontent.com/render/math?math=20^\circ">:
+
+``` c++
+void resetTemperatureCPU(float* h_temperature, int width, int height, ProblemParameters bc) {
+
+	for (int j = 0; j < height; j++)
+		for (int i = 0; i < width; i++) {
+			const int idx = j * width + i;
+			h_temperature[idx] = bc.T_air;
+		}
+}
+```
+
+Infine, la funzione `temperatureUpdateCPU` è la seguente:
+
+``` c++
+void temperatureUpdateCPU(float* __restrict h_T, float* __restrict h_T_new, const int width, const int height, const ProblemParameters bc) {
+
+	// --- Only update "interior" (not boundary) node points
+	for (int j = 0; j < height; j++)
+		for (int i = 0; i < width; i++) {
+			const int idx = j * width + i;
+			if ((i > 0) && (i < width - 1) && (j > 0) && (j < height - 1))
+				h_T_new[idx] = 0.25f * (h_T[idx - 1] +
+					h_T[idx + 1] +
+					h_T[idx + width] +
+					h_T[idx - width]);
+			setBoundaryConditions(h_T_new, width, height, idx, i, j, bc);
+		}
+}
+```
+
+Essa meramente implementa la regola di update [\[7\]](#LaplaceJacobi). E' da notare come i valori di temperatura acceduti distino `1` per l'indice `n` e `width` per l'indice `m`. Ciò è dovuto al fatto che la matrice delle temperature è semanticamente bidimensionale, mentre essa è memorizzata in uno spazio di memoria lineare.
+
+Infine, la funzione `setBoundaryConditions` fissa le condizioni al contorno sui bordi del dominio e sul pipe:
+
+``` c++
+void setBoundaryConditions(float* d_T, const int width, const int height, const int idx,
+	const int tidx, const int tidy, const ProblemParameters bc) {
+
+	// --- Set the pipe temperature to T_pipe and return
+	float distanceFromPipeCenterSquared = ((tidx - bc.x) * (tidx - bc.x) + (tidy - bc.y) * (tidy - bc.y));
+	if (distanceFromPipeCenterSquared < bc.radius * bc.radius) d_T[idx] = bc.T_pipe;
+
+	// --- Set the left, right and upper border temperature to T_air and return
+	if ((tidx == 0) || (tidx == width - 1) || (tidy == 0)) d_T[idx] = bc.T_air;
+
+	// --- Set the lower border temperature to T_ground and return
+	if (tidy == height - 1) d_T[idx] = bc.T_ground;
+
+}
+```
+
 
 
 Assumendo <img src="https://render.githubusercontent.com/render/math?math=\Delta t=1"> e <img src="https://render.githubusercontent.com/render/math?math=\Delta x=\Delta y=1">,  l'equazione [\[3\]](#heatEquationDiscretized) definisce la seguente formula di aggiornamento:
