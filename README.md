@@ -1,4 +1,4 @@
-# Jacobi Iterations for the Laplace Equation
+# Jacobi Iterations for the Laplace Equation with OpenGL interoperability
 
 ## Equazione di Laplace: Iterazioni di Jacobi
 
