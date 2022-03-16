@@ -170,3 +170,31 @@ https://skill-lync.com/student-projects/Steady-and-Transient-analysis-of-2D-heat
 
 https://www.dsi.unive.it/~calpar/6_Progetto-02-03.pdf
 
+https://github.com/ugovaretto-accel/cuda-opengl-interop/blob/master/texture3d-write/simpleGL3DSurfaceWrite.cpp
+
+https://gist.github.com/allanmac/4ff11985c3562830989f
+
+https://www.3dgep.com/opengl-interoperability-with-cuda/
+
+https://www.3dgep.com/introduction-opengl/
+
+
+Eliminare freeglutd.lib: https://stackoverflow.com/questions/29110985/why-is-visual-studio-trying-to-link-freeglutd-lib
+
+https://github.com/prabindh/nengl/tree/master/cuda/ogl4
+
+https://www.informit.com/articles/article.aspx?p=2455391&seqNum=2
+
+https://www.adoclib.com/blog/cuda-opengl-interop-writing-to-surface-object-does-not-erase-previous-contents.html
+
+http://www.mat.unimi.it/users/sansotte/cuda/CUDA_by_Example.pdf
+
+https://sourceforge.net/projects/glew/
+
+http://freeglut.sourceforge.net/ (da qui ci sono i link al download; devi andare in prepacked releases, vedi https://www.transmissionzero.co.uk/software/freeglut-devel/)
+
+Linkare glew32s.lib e freeglut.lib
+
+Spostare freeglut.dd nella directory dei file sorgenti di Visual Studio. C'è un modo per fare il link automatico indicando la directory della dll?
+
+Vedi anche SimpleGL tra gli esempi CUDA.
