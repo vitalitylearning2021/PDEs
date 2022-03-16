@@ -1,4 +1,4 @@
-# PDEs
+# Jacobi Iterations for the Laplace Equation
 
 ## Equazione di Laplace: Iterazioni di Jacobi
 
