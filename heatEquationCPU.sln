@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "heatEquationCPU", "heatEquationCPU\heatEquationCPU.vcxproj", "{B413EA9C-CC85-4EB8-BC84-88A1961A0C64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B413EA9C-CC85-4EB8-BC84-88A1961A0C64}.Debug|x64.ActiveCfg = Debug|x64
+		{B413EA9C-CC85-4EB8-BC84-88A1961A0C64}.Debug|x64.Build.0 = Debug|x64
+		{B413EA9C-CC85-4EB8-BC84-88A1961A0C64}.Release|x64.ActiveCfg = Release|x64
+		{B413EA9C-CC85-4EB8-BC84-88A1961A0C64}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {93AC60B8-5419-44F1-AC17-FC76CDBF0A0E}
+	EndGlobalSection
+EndGlobal
